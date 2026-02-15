@@ -61,89 +61,120 @@
 
         /* --- MOBILE OPTIMIZATIONS --- */
         @media (max-width: 480px) {
+            body {
+                justify-content: flex-start !important;
+                /* Align to top on mobile */
+            }
+
             .card {
-                width: 95% !important;
+                width: 100vw !important;
+                /* Force full viewport width */
                 max-width: none !important;
-                height: 92dvh !important;
-                /* Use dynamic viewport height */
+                height: 100dvh !important;
                 max-height: none !important;
+                border-radius: 0 !important;
+                border: none !important;
+                margin: 0 !important;
+                /* Reset any margins */
+                box-shadow: none !important;
+                /* Remove shadow for flat look */
             }
 
             .visualizer-container {
-                height: 120px !important;
-                /* Significantly smaller */
-                min-height: 120px !important;
-                flex-shrink: 0;
+                display: none !important;
             }
 
             .visual-icon {
-                font-size: 2.5rem !important;
-                /* Smaller icon */
+                font-size: 2rem !important;
             }
 
             h1 {
-                font-size: 1.8rem !important;
-                /* Smaller title */
+                font-size: 1.5rem !important;
+                margin-bottom: 5px !important;
             }
 
             .content-area {
                 padding: 10px !important;
                 gap: 5px !important;
                 overflow: hidden;
-                /* Ensure content fits */
+                min-height: 0 !important;
+                /* CRITICAL: Allows flex child to scroll */
+                flex: 1 1 auto !important;
             }
 
             .trans-text {
                 font-size: 0.9rem !important;
-                margin-bottom: 5px !important;
+                margin-bottom: 2px !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+                text-align: center;
             }
 
             .translation-section {
-                flex: 0 0 auto !important;
-                /* Don't force 40% height */
-                min-height: 40px;
-                padding-bottom: 5px !important;
+                flex: 0 0 40px !important;
+                min-height: 40px !important;
+                padding-bottom: 0 !important;
                 border-bottom: 1px dashed rgba(255, 255, 255, 0.3) !important;
+                margin-bottom: 5px !important;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .message-section {
                 flex: 1 1 auto !important;
-                /* Allow growing */
                 min-height: 0 !important;
-                /* specific fix for flex scroll */
+                /* CRITICAL: Allows shrinking/scrolling */
+                height: auto !important;
                 padding: 10px !important;
+                overflow-y: auto !important;
+                margin-bottom: 5px !important;
+                -webkit-overflow-scrolling: touch;
+                /* Smooth scroll on iOS */
             }
 
             .msg-content {
-                font-size: 0.8rem !important;
-                padding-bottom: 60px !important;
-                /* Extra space for scrolling on touch */
-                line-height: 1.4 !important;
+                font-size: 0.95rem !important;
+                padding-bottom: 80px !important;
+                /* Extra space at bottom for scrolling */
+                line-height: 1.5 !important;
             }
 
+            .player-controls {
+                padding: 5px 15px 15px 15px !important;
+                background: rgba(255, 255, 255, 0.8) !important;
+                /* Higher contrast */
+                flex-shrink: 0 !important;
+                /* Use fixed height */
+            }
+
+            /* Adjust buttons for touch targets */
             .btn {
-                padding: 6px 12px !important;
-                font-size: 0.85rem !important;
-                min-height: 35px !important;
+                padding: 12px 20px !important;
+                /* Larger touch targets */
+                min-height: 44px !important;
             }
 
             .play-btn {
-                width: 45px !important;
-                height: 45px !important;
-                font-size: 1rem !important;
+                width: 55px !important;
+                height: 55px !important;
             }
 
             .start-card {
-                padding: 15px !important;
+                padding: 20px !important;
                 width: 90% !important;
             }
 
+            /* Adjust start screen title */
             #start-screen h1 {
                 font-size: 2.5rem !important;
             }
 
             .start-card h3 {
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
             }
         }
 
@@ -184,17 +215,24 @@
         /* --- VISUALIZER SECTION (Replaces Album Art) --- */
         .visualizer-container {
             width: 100%;
-            height: 250px;
+            height: 25vh;
+            /* Flexible height */
+            min-height: 100px;
+            /* Reduced from 180px to allow more room for text */
+            max-height: 300px;
             background: linear-gradient(to bottom, rgba(161, 140, 209, 0.1), rgba(255, 255, 255, 0));
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             flex-direction: column;
+            flex-shrink: 1;
+            /* Allow shrinking if needed */
         }
 
         .visual-icon {
-            font-size: 5rem;
+            font-size: 4rem;
+            /* Slightly smaller base size */
             filter: drop-shadow(0 0 20px rgba(161, 140, 209, 0.6));
             animation: heartbeat 2s infinite;
             z-index: 2;
@@ -209,7 +247,8 @@
         h1 {
             font-family: 'Great Vibes', cursive;
             color: #4a2c2c;
-            font-size: 3rem;
+            font-size: 2.5rem;
+            /* Slightly smaller for better fit */
             margin: 0;
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
             font-weight: normal;
@@ -249,19 +288,28 @@
 
         /* Hidden as per request */
 
+        /* --- CONTENT AREA & SECTIONS --- */
         .content-area {
             flex: 1;
+            /* Occupy remaining space in .card */
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
             overflow: hidden;
+            /* Hide anything that spills out */
+            min-height: 0;
+            /* CRITICAL: Enables nested flex scrolling */
+            /* Removed height: 100% as it forces overflow when combined with siblings */
         }
 
         /* Top Half: Translation */
         .translation-section {
-            flex: 0 0 40%;
-            /* Fixed height portion */
+            flex: 0 0 auto;
+            /* Don't grow, don't shrink, just take what you need */
+            min-height: 40px;
+            max-height: 80px;
+            /* Cap it */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -289,9 +337,12 @@
 
         /* Bottom Half: Message */
         .message-section {
-            flex: 1;
+            flex: 1 1 20%;
+            /* Basis of 20%, grow to fill remaining space */
+            min-height: 0;
+            /* CRITICAL: Must be 0 (or small) to allow scrolling */
             overflow-y: auto;
-            /* Allow manual scroll */
+            /* Enable scroll */
             position: relative;
             background: rgba(255, 255, 255, 0.4);
             border-radius: 15px;
@@ -299,12 +350,6 @@
             text-align: left;
             mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-            pointer-events: auto;
-            /* Ensure clickable/scrollable */
-
-            /* Custom Scrollbar (Firefox) */
-            scrollbar-width: thin;
-            scrollbar-color: rgba(161, 140, 209, 0.5) transparent;
         }
 
         /* Custom Scrollbar (Webkit/Chrome/Safari) */
@@ -354,6 +399,8 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 0 0 20px 20px;
+            flex-shrink: 0;
+            /* Ensure controls never shrink or disappear */
         }
 
         .progress-container {
@@ -658,19 +705,30 @@
             const msgDiv = document.getElementById('msgText');
             let messageFullyRevealed = false;
 
+            // --- PRELOAD FIRST SONG ---
+            document.addEventListener('DOMContentLoaded', () => {
+                // Pre-set the source so it buffers immediately
+                const firstSong = songs[0];
+                audio.src = "songs/" + firstSong.file;
+                audio.preload = "auto";
+                // We'll set currentTime in loadSong anyway, but this helps the browser
+                // start fetching the file metadata and buffer.
+            });
+
             function enterWorld() {
                 document.getElementById('start-screen').style.opacity = '0';
-                document.getElementById('start-screen').style.visibility = 'hidden'; // Ensure it's hidden immediately for clicks to pass through if needed, though timeout handles display:none
+                document.getElementById('start-screen').style.visibility = 'hidden';
 
                 // Show the main card
                 const mainCard = document.getElementById('mainCard');
                 mainCard.style.opacity = '1';
                 mainCard.style.pointerEvents = 'auto';
 
+                // Reduced delay for faster start
                 setTimeout(() => {
                     document.getElementById('start-screen').style.display = 'none';
                     loadSong(0);
-                }, 800);
+                }, 100);
             }
 
             function switchTab() { } // Deprecated

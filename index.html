@@ -78,51 +78,67 @@
                 /* Reset any margins */
                 box-shadow: none !important;
                 /* Remove shadow for flat look */
-                background: rgba(255, 255, 255, 0.2) !important;
-                /* More transparent for 3D bg visibility */
-                backdrop-filter: blur(5px) !important;
-                /* Less blur to see hearts */
+                background: rgba(255, 255, 255, 0.15) !important;
+                /* Very transparent */
+                backdrop-filter: blur(3px) !important;
+                /* Minimal blur */
+                justify-content: space-between !important;
+                /* Distribute space evenly */
             }
 
             .visualizer-container {
                 display: flex !important;
-                /* Show it so title is visible */
+                /* Ensure container is visible */
                 height: auto !important;
-                min-height: 0 !important;
+                min-height: 50px !important;
+                /* Give it space */
                 flex: 0 0 auto !important;
-                padding-top: 20px !important;
+                padding-top: 10px !important;
+                background: transparent !important;
             }
 
             .visual-icon {
                 display: none !important;
-                /* Hide icon to save space */
+                /* Hide icon */
+            }
+
+            .song-info {
+                display: block !important;
+                margin: 0 !important;
             }
 
             h1 {
                 font-size: 2rem !important;
-                margin-bottom: 5px !important;
+                /* Make sure title is big enough */
+                display: block !important;
+                color: #4a2c2c !important;
+                /* Ensure contrast */
+                margin: 0 !important;
             }
 
             .content-area {
                 padding: 10px !important;
-                gap: 15px !important;
-                /* Increased gap for separation */
+                gap: 10px !important;
                 overflow: hidden;
                 /* Hide anything that spills out */
                 min-height: 0 !important;
                 /* CRITICAL: Enables nested flex scrolling */
                 flex: 1 1 auto !important;
+                justify-content: center !important;
+                /* Center content vertically */
             }
 
             .trans-text {
                 font-size: 0.95rem !important;
                 margin: 0 !important;
                 white-space: normal !important;
-                /* Allow wrapping in the box */
+                /* Allow wrapping */
                 text-align: center;
-                color: #fff !important;
-                /* White text on gradient */
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                color: #e0c3fc !important;
+                /* Light violet text */
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                font-family: 'Poppins', sans-serif !important;
+                font-weight: 500 !important;
             }
 
             .translation-section {
@@ -130,19 +146,21 @@
                 min-height: 0 !important;
                 height: auto !important;
                 padding: 15px !important;
-                border: none !important;
-                margin-bottom: 0 !important;
+                margin-bottom: 5px !important;
 
-                /* Gradient Box Style */
-                background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-                border-radius: 15px;
-                box-shadow: 0 4px 15px rgba(161, 140, 209, 0.3);
+                /* "Violet Starry Space Vibes" */
+                background: linear-gradient(135deg, #0f0c29, #302b63, #24243e) !important;
+                /* Deep Space */
+                border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                border-radius: 20px !important;
+                box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
+                /* Violet glow */
                 width: 100%;
             }
 
             .message-section {
-                flex: 0 1 50% !important;
-                /* Target 50% height, shrink if needed */
+                flex: 0 1 39% !important;
+                /* EXACTLY 39% as requested */
                 min-height: 0 !important;
                 /* CRITICAL: Allows shrinking/scrolling */
                 height: auto !important;
@@ -151,23 +169,19 @@
                 margin-bottom: 5px !important;
                 -webkit-overflow-scrolling: touch;
                 /* Smooth scroll on iOS */
-                background: rgba(255, 255, 255, 0.5) !important;
-                /* Slightly more opaque */
+                background: rgba(255, 255, 255, 0.6) !important;
+                border: 1px solid rgba(255, 255, 255, 0.5) !important;
             }
 
             .msg-content {
                 font-size: 1rem !important;
-                /* Slightly larger text */
-                padding-bottom: 60px !important;
-                /* Extra space at bottom for scrolling */
+                padding-bottom: 40px !important;
                 line-height: 1.6 !important;
             }
 
             .player-controls {
-                padding: 10px 20px 30px 20px !important;
-                /* More bottom padding for mobile safe area */
+                padding: 10px 20px 20px 20px !important;
                 background: transparent !important;
-                /* Clean look */
                 flex-shrink: 0 !important;
             }
 

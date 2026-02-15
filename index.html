@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Samridhi ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- RESET & BASICS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            /* THE LOVE GRADIENT */
+            /* THE LOVE GRADIENT (Purple to Pink) */
+            /* linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%) is nice purple-pink */
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #4a2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- 3D FLOATING HEARTS (Background) --- */
+        .heart-bg {
+            position: absolute;
+            bottom: -100px;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 5px rgba(255, 182, 193, 0.8), 2px 2px 2px rgba(200, 100, 100, 0.2);
+            z-index: 0;
+            pointer-events: none;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* --- MOBILE OPTIMIZATIONS --- */
+        @media (max-width: 480px) {
+            .card {
+                width: 95% !important;
+                max-width: none !important;
+                height: 90dvh !important;
+                /* Use dynamic viewport height */
+                max-height: none !important;
+            }
+
+            .visualizer-container {
+                height: 180px !important;
+                /* Shrink visualizer to give more space to text */
+            }
+
+            .visual-icon {
+                font-size: 3.5rem !important;
+            }
+
+            h1 {
+                font-size: 2.2rem !important;
+            }
+
+            .content-area {
+                padding: 15px !important;
+                gap: 10px !important;
+            }
+
+            .trans-text {
+                font-size: 1rem !important;
+            }
+
+            .msg-content {
+                font-size: 0.85rem !important;
+                padding-bottom: 40px !important;
+                /* Extra space for scrolling on touch */
+            }
+
+            .btn {
+                padding: 8px 15px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .play-btn {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 1.2rem !important;
+            }
+
+            .start-card {
+                padding: 20px !important;
+                width: 90% !important;
+            }
+
+            #start-screen h1 {
+                font-size: 3rem !important;
+            }
+        }
+
+        /* --- GLASS CARD CONTAINER --- */
+        .card {
+            width: 90%;
+            max-width: 450px;
+            /* Wider card for desktop */
+            height: 80vh;
+            /* Responsive height */
+            max-height: 800px;
+            background: rgba(255, 255, 255, 0.55);
+            /* Slightly more opaque for readability */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            /* Purple tint border */
+            border-color: rgba(224, 195, 252, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            transition: opacity 1s;
+            /* Only opacity transition, removed transform */
+            opacity: 0;
+        }
+
+        /* Larger screens: Make it a bit wider */
+        @media (min-width: 768px) {
+            .card {
+                max-width: 550px;
+            }
+        }
+
+        /* --- VISUALIZER SECTION (Replaces Album Art) --- */
+        .visualizer-container {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(to bottom, rgba(161, 140, 209, 0.1), rgba(255, 255, 255, 0));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .visual-icon {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 20px rgba(161, 140, 209, 0.6));
+            animation: heartbeat 2s infinite;
+            z-index: 2;
+        }
+
+        .song-info {
+            margin-top: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #4a2c2c;
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            font-weight: normal;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            5% {
+                transform: scale(1.1);
+            }
+
+            10% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* --- TABS --- */
+        /* --- CONTENT AREA & SECTIONS --- */
+        .tabs {
+            display: none;
+        }
+
+        /* Hidden as per request */
+
+        .content-area {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        /* Top Half: Translation */
+        .translation-section {
+            flex: 0 0 40%;
+            /* Fixed height portion */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+            padding-bottom: 10px;
+        }
+
+        .trans-text {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #9b59b6;
+            /* Amethyst Purple */
+            font-weight: 600;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            transform: scale(0.95);
+        }
+
+        .trans-text.visible {
+            opacity: 1;
+            transform: scale(1);
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Bottom Half: Message */
+        .message-section {
+            flex: 1;
+            overflow-y: auto;
+            /* Allow manual scroll */
+            position: relative;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: left;
+            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            pointer-events: auto;
+            /* Ensure clickable/scrollable */
+        }
+
+        .msg-content {
+            font-size: 0.95rem;
+            color: #4a2c2c;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            padding-bottom: 20px;
+        }
+
+        /* Cursor Animation */
+        .msg-content::after {
+            content: '|';
+            /* Changed to standard cursor */
+            display: inline-block;
+            animation: blink 1s step-end infinite;
+            vertical-align: baseline;
+            /* Fixed alignment */
+            color: #8e44ad;
+            /* Match theme */
+            font-weight: 300;
+            /* Thinner */
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* --- CONTROLS --- */
+        .player-controls {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            transition: width 0.1s linear;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .btn {
+            background: white;
+            border: none;
+            color: #9b59b6;
+            /* width: 45px; REMOVED FIXED WIDTH */
+            /* height: 45px; REMOVED FIXED HEIGHT */
+            min-height: 45px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            /* Pill shape for text */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            color: #8e44ad;
+            /* Deep Purple */
+        }
+
+        .play-btn {
+            border-radius: 50%;
+            /* Keep Play button circular */
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            /* Override padding */
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            color: white;
+        }
+
+        /* --- START SCREEN --- */
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(161, 140, 209, 0.2) 0%, rgba(251, 194, 235, 0.2) 100%);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .start-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 30px;
+            border: 4px dashed #a18cd1;
+            box-shadow: 0 15px 35px rgba(161, 140, 209, 0.3);
+            text-align: center;
+            transform: scale(0.9);
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            max-width: 90%;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        #start-screen h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #8e44ad;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0px rgba(224, 195, 252, 0.5);
+            font-weight: normal;
+        }
+
+        .start-card p {
+            color: #6a4c4c;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .start-card h3 {
+            color: #8e44ad;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        #start-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(161, 140, 209, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="start-screen">
+        <div class="start-card">
+            <h1>For Samridhi</h1>
+            <p>Holding you in my heart...</p>
+            <h3>First of all look at the translation of the songs while feeling them to ur core. Then, read the message.
+            </h3>
+            <button id="start-btn" onclick="enterWorld()">Open Gift 🎁</button>
+        </div>
+    </div>
+
+    <div class="card" id="mainCard">
+        <div class="visualizer-container">
+            <div class="visual-icon" id="visualIcon">💖</div>
+            <div class="song-info">
+                <h1 id="songTitle">Loading...</h1>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <!-- Top: Translation -->
+            <div class="translation-section">
+                <div class="trans-text" id="transText">...</div>
+            </div>
+
+            <!-- Bottom: Message -->
+            <div class="message-section" id="messageSection">
+                <div class="msg-content" id="msgText">...</div>
+            </div>
+        </div>
+
+        <div class="player-controls">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="buttons">
+                <button class="btn" onclick="Previous()" id="prevBtn">Previous</button>
+                <button class="btn play-btn" onclick="togglePlay()" id="playBtn">▶</button>
+                <button class="btn" onclick="Next()" id="nextBtn">Next</button>
+            </div>
+        </div>
+
+        <audio id="audio"></audio>
+
+        <script>
+            // --- 3D FLOATING HEARTS SCRIPT ---
+            document.addEventListener('DOMContentLoaded', () => {
+                const numHearts = 25;
+                const body = document.querySelector('body');
+                for (let i = 0; i < numHearts; i++) {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤';
+                    heart.classList.add('heart-bg');
+                    const leftPos = Math.random() * 100;
+                    const size = Math.random() * 2 + 1;
+                    const duration = Math.random() * 10 + 15;
+                    const delay = Math.random() * 15;
+                    const blur = Math.random() * 2;
+                    heart.style.left = `${leftPos}vw`;
+                    heart.style.fontSize = `${size}rem`;
+                    heart.style.animationDuration = `${duration}s`;
+                    heart.style.animationDelay = `-${delay}s`;
+                    heart.style.filter = `blur(${blur}px)`;
+                    body.appendChild(heart);
+                }
+            });
+
+            // --- 3D TILT EFFECT REMOVED AS REQUESTED ---
+            /*
+            const card = document.getElementById('mainCard');
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 30;
+                const y = (window.innerHeight / 2 - e.pageY) / 30;
+                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+            */
+
+            // --- DATA ---
+            const songs = [
+                {
+                    title: "Samjhawan",
+                    file: "01_Samjhawan_spotdown.org.mp3",
+                    icon: "💖",
+                    message: "My heart had chosen my ex back then despite what I was going through, but I am grateful that the path eventually led me to you. Maybe it was destined ki i wont heal until i meet u. I am grateful for everything, Samridhi.\nWhen you’re with me in my DMs, sleep beside me, and care for me, my peace finds its own place in that steady presence of yours.\nHave faith in me, Samridhi. I will make it to the place I must reach. You will become mine. You are my heart, my very wife and life, my soulmate.\nSince we won’t be seeing each other for two days straight, I may not be able to explain how it feels to me, but I will miss you so much. This song, especially this last part, is going to describe it even better.",
+                    data: {
+                        start: 121.65, end: 168.47,
+                        timestamps: [121.65, 126.38, 130.45, 135.31, 138.50, 143.12, 147.32, 151.40, 155.98, 160.53, 164.85],
+                        lyrics: ["mere dil ne chun laiya ne", "tere dil diyaan raahaa", "tu jo mere naal ture taan", "tur paye meriyaan saahaa", "jinaa mera haaye", "hun hai tera ki main karaan", "tu kar itbar mera", "mai karu intzar tera", "tu dil tuuhion jaan meri", "main tainnu samjhaavaan ki", "naa tere binaa lagada jeee"],
+                        trans: ["My heart has chosen", "The paths of your heart", "If you walk with me", "My breath starts walking too", "My life...", "Is now yours, what do I do?", "Trust me", "I will wait for you", "You are my heart, you are my soul", "How do I explain to you?", "My heart doesn't beat without you"]
+                    }
+                },
+                {
+                    title: "Mera Mann",
+                    file: "02_Mera Mann Kehne Laga_spotdown.org.mp3",
+                    icon: "🌙",
+                    message: "Samridhi, I won’t be able to bear the sorrow of separation. I will do anything, literally everything in this world, to make you mine. You need not feel any pressure at all. If my love is pure for you, I will eventually do it.\nMy breath feels half and incomplete if you’re not around.\nI may say that it’s just two days, but I don’t know why. It’s just that I can feel moisture in my eyes and a pressing feeling around my heart.\nMy heart always begs and cries for you to stay forever, and it will.\nI’ll kiss you, and I guess that might cool me down.",
+                    data: {
+                        start: 88.81, end: 218.27,
+                        timestamps: [88.81, 93.54, 96.99, 103.90, 106.41, 109.56, 141.55, 144.86, 148.04, 154.40, 157.45, 160.94, 166.45, 173.19, 179.20, 186.11, 192.18, 198.75, 204.52, 211.72],
+                        lyrics: ["Mmm, tuje apana bana loon", "tuje tujh se churaa loon", "tuje khud mein chupa loon sahiba", "Ek mujh pe karam ho", "Tu hee mera sanam ho", "Teri mujh pe nazar ho, sahiba", "mar main jaaoongaa, rah naa paaoon", "gam judaae ka sah naa paaoon", "hai tuje pyaar ka vaastaa", "teri yaaden hain kuch adhooree", "saans aadhee hai, kuch hai pooree", "aankhon mein hai kaisee ye nami?", "raat ke chaand tale", "aagosh mein meri too aa", "banhon mein le lo muje", "zaraa sapanon mein apanae basaa", "mera man kehne lagaa", "paas aa ke naa too door jaa", "chune de honth tere", "zaraa saanson mein apanee basaa"],
+                        trans: ["Mmm, let me make you mine", "Let me steal you from yourself", "Let me hide you inside me", "Do this one favor for me", "That you become my beloved", "Let your gaze be on me", "I will die, I cannot live", "I cannot bear the pain of separation", "For the sake of our love", "Your memories are somewhat incomplete", "Breath is half, somewhat whole", "Why is there moisture in my eyes?", "Under the moon of the night", "Come into my embrace", "Take me in your arms", "Settle me in your dreams", "My heart has started saying...", "Come close and don't go away", "Let me touch your lips", "Let me live in your breath"]
+                    }
+                },
+                {
+                    title: "Mere Liye Tum Kaafi Ho",
+                    file: "03_Mere Liye Tum Kaafi Ho (From _Shubh Mangal Zyada Saavdhan_)_spotdown.org.mp3",
+                    icon: "💑",
+                    message: "I don’t know how we became two bodies and one soul, but it is true now. Yahan se, Samridhi, har cheez, har dukh, har sukh, har pal, saath mein chalenge, and we’ll live it together. With you, this life of mine is so lively. I love you so much <3.\nWe both are somewhat incomplete without each other, but we complete each other by sticking to the bond and struggling through tough times.\nYou ask me, I am not asking or demanding anything, Samridhi. Jab tum ho mere saath, main tumse aur kya hi maangu. Meri sab kuch ho tum.",
+                    data: {
+                        start: 11.61, end: 62.77,
+                        timestamps: [11.61, 14.28, 15.56, 16.81, 22.37, 24.89, 27.61, 33.16, 34.35, 35.70, 36.62, 38.33, 41.12, 43.98, 44.95, 46.84, 49.30, 52.74, 60.28],
+                        lyrics: ["teri-meri aisee jud gayi kahaani", "ki jud jaataa jaise do", "nadiyon kaa paani", "muje aage tere saath bahna hai", "jaanaa tumhein to hai ye baath jaani", "ki ai zindagi kaise banati suhaani", "muje har pal tere saath rahana hai", "tum kuch adhure se", "hum bhee kuch aadhe", "aadha-aadha hum", "jo donon milaa den", "to ban jaaegee apanee ek zindgaani", "ye duniyaan milee naa milee hum ko", "khushiyaan bhagha", "dengee har gam ko", "tum saath ho phir kya baaqee ho", "mere liye tum kaafee ho", "mere liye tum kaafee ho", "mere liye tum kaafee ho"],
+                        trans: ["Our story connected in such a way", "Like two connect...", "Water of rivers", "I want to flow forward with you", "You know this truth, my love", "How life becomes beautiful", "I want to stay with you every moment", "You are a bit incomplete", "I am also a bit half", "Half and half, we...", "If we mix both together", "It will become our one life", "Whether we get the world or not", "Happiness will drive away...", "Every sorrow", "If you are with me, what else is left?", "For me, you are enough", "For me, you are enough", "For me, you are enough"]
+                    }
+                },
+                {
+                    title: "Bepanaah (Zara Sa)",
+                    file: "04_Zara Sa_spotdown.org.mp3",
+                    icon: "🌹",
+                    message: "I will become capable enough to lay the entire world at your feet. Every happiness of this world will be bestowed upon you, my very dear.\nAnd this gift is very small in front of the love I have for you. I hope you’ll like this gift.\nTo me, you are in every prayer. I ask you everyday from the divine power.\nI love you so much that even words cannot describe it.\nI am completely yours, Samridhi. I love you so much. <3",
+                    data: {
+                        start: 136.65, end: 170.19,
+                        timestamps: [136.65, 139.84, 142.07, 148.31, 153.74, 158.96, 165.06],
+                        lyrics: ["Main tere, main tere qadmon", "mein rakh doon yeh jahaan", "Mera ishq deewangi", "Hai nahi, hai nahi aashiq koi mujh sa tera", "Tu mere liye bandagi", "Main chaahoon tujh ko, meri jaan, bepanaah", "Fida hoon tujh pe, meri jaan, bepanaah"],
+                        trans: ["I, in your footsteps...", "Will lay down this world", "My love is madness", "There is no lover like me for you", "You are worship to me", "I will love you, my life, limitlessly", "I am sacrificed on you, my life, limitlessly"]
+                    }
+                },
+                {
+                    title: "Kaun Tujhe",
+                    file: "05_Kaun Tujhe (Armaan Malik Version)_spotdown.org.mp3",
+                    icon: "✨",
+                    message: "Last but not the least, every song is a feeling for you. Yet, this one was very close to me, and these lyrics are just beyond words. I cannot even explain my feelings in words, just feel this song, because explaining this might burst me into tears.\nI love you with my soul, Samridhi. Feel every line of the songs that were handpicked, especially the translations. I have handpicked each and every single line of lyrics for you.",
+                    data: {
+                        start: 94.1, end: 137.98,
+                        timestamps: [94.10, 98.08, 102.81, 107.51, 111.31, 113.26, 115.54, 120.58, 125.30, 129.52, 134.35],
+                        lyrics: ["too jo muje aa milaa,", "sapane hue sarfire", "haaton mein aathe nahin,", "udate hain lamhe mere", "meri hansee tujh se,", "meri khushii tujh se", "tuje khabar kya, beqadar?", "jis din tujh ko naa dekhoon", "pagal pagal phirata hoon", "kaun tuje yoon pyaar karega?", "jaise main karthaa hoon"],
+                        trans: ["Since you came and met me", "Dreams went crazy", "They don't come into hands", "My moments fly away", "My smile is from you", "My happiness is from you", "Do you even know, unaware one?", "The day I don't see you", "I wander around like crazy", "Who will love you like this?", "The way I do"]
+                    }
+                }
+            ];
+
+            // --- ENGINE ---
+            let currentIndex = 0;
+            const audio = document.getElementById('audio');
+            const songTitle = document.getElementById('songTitle');
+            const visualIcon = document.getElementById('visualIcon');
+            const playBtn = document.getElementById('playBtn');
+            const progressBar = document.getElementById('progressBar');
+
+            const transDiv = document.getElementById('transText');
+            const msgDiv = document.getElementById('msgText');
+            let messageFullyRevealed = false;
+
+            function enterWorld() {
+                document.getElementById('start-screen').style.opacity = '0';
+                document.getElementById('start-screen').style.visibility = 'hidden'; // Ensure it's hidden immediately for clicks to pass through if needed, though timeout handles display:none
+
+                // Show the main card
+                const mainCard = document.getElementById('mainCard');
+                mainCard.style.opacity = '1';
+                mainCard.style.pointerEvents = 'auto';
+
+                setTimeout(() => {
+                    document.getElementById('start-screen').style.display = 'none';
+                    loadSong(0);
+                }, 800);
+            }
+
+            function switchTab() { } // Deprecated
+
+            function loadSong(index) {
+                currentIndex = index;
+                const song = songs[index];
+
+                // Visual Updates
+                songTitle.innerText = song.title;
+                visualIcon.innerText = song.icon;
+                msgDiv.innerText = ""; // Start empty for typing effect
+                messageFullyRevealed = false; // Reset flag
+
+                transDiv.innerText = "Song starting...";
+                transDiv.className = "trans-text";
+
+                // Reset Scroll
+                document.getElementById('messageSection').scrollTop = 0;
+
+                audio.src = "songs/" + song.file;
+                audio.currentTime = song.data.start;
+                audio.play().catch(() => { });
+                playBtn.innerText = "⏸";
+
+                // Update Navigation Buttons (Last Song Logic)
+                const nextBtn = document.getElementById('nextBtn');
+                if (index === songs.length - 1) {
+                    nextBtn.innerText = "Replay"; // Changed to Text
+                    nextBtn.onclick = () => loadSong(0); // Restart playlist
+                } else {
+                    nextBtn.innerText = "Next"; // Changed to Text
+                    nextBtn.onclick = Next;
+                }
+            }
+
+            function togglePlay() {
+                if (audio.paused) { audio.play(); playBtn.innerText = "⏸"; }
+                else { audio.pause(); playBtn.innerText = "▶"; }
+            }
+
+            function Next() {
+                currentIndex = (currentIndex + 1) % songs.length;
+                loadSong(currentIndex);
+            }
+
+            function Previous() {
+                currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+                loadSong(currentIndex);
+            }
+
+            // --- LOOP CHECK LOGIC (Shared) ---
+            function checkLoop() {
+                const song = songs[currentIndex];
+                const data = song.data;
+                const time = audio.currentTime;
+
+                if (!audio.paused && time >= data.end) {
+                    messageFullyRevealed = true; // Lock message
+                    audio.currentTime = data.start; // Loop
+                }
+            }
+
+            // Fallback for background tab looping
+            audio.addEventListener('timeupdate', checkLoop);
+
+            // --- SMOOTH ANIMATION LOOP ---
+            function animate() {
+                requestAnimationFrame(animate);
+
+                const song = songs[currentIndex];
+                const data = song.data;
+                const time = audio.currentTime;
+
+                checkLoop();
+
+                // Progress Bar
+                const progressPercent = Math.max(0, (time - data.start) / (data.end - data.start));
+                progressBar.style.width = (progressPercent * 100) + "%";
+
+                // 1. Auto-Typing Message (Smooth)
+                if (progressPercent > 0 && progressPercent <= 1) {
+                    const totalLength = song.message.length;
+                    const charIndex = Math.floor(totalLength * progressPercent);
+
+                    // Only update DOM if char count changed to avoid layout thrashing
+                    if (!messageFullyRevealed && msgDiv.innerText.length !== charIndex) {
+                        const msgSection = document.getElementById('messageSection');
+
+                        // Check if user is near bottom (within 50px) BEFORE updating
+                        const isAtBottom = msgSection.scrollHeight - msgSection.scrollTop - msgSection.clientHeight < 50;
+
+                        msgDiv.innerText = song.message.substring(0, charIndex);
+
+                        // Only auto-scroll if they were already at the bottom
+                        if (isAtBottom) {
+                            msgSection.scrollTop = msgSection.scrollHeight;
+                        }
+
+                        if (charIndex >= totalLength) {
+                            messageFullyRevealed = true;
+                        }
+                    }
+                }
+
+                // 2. Sync Translation
+                let activeIdx = -1;
+                for (let i = 0; i < data.timestamps.length; i++) {
+                    if (time >= data.timestamps[i]) activeIdx = i;
+                }
+                if (activeIdx !== -1) {
+                    const txt = data.trans[activeIdx];
+                    if (transDiv.innerText !== txt) {
+                        transDiv.innerText = txt;
+                        transDiv.classList.add('visible');
+                        // Add pop effect to translation
+                        transDiv.style.transform = "scale(1.05)";
+                        setTimeout(() => transDiv.style.transform = "scale(1)", 200);
+                    }
+                }
+            }
+
+            // Start the loop
+            requestAnimationFrame(animate);
+        </script>
+</body>
+
+</html>

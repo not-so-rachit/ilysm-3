@@ -67,8 +67,8 @@
             }
 
             .card {
-                width: 100vw !important;
-                /* Force full viewport width */
+                width: 100% !important;
+                /* Fixes potential scrollbar offset */
                 max-width: none !important;
                 height: 100dvh !important;
                 max-height: none !important;
@@ -76,6 +76,8 @@
                 border: none !important;
                 margin: 0 !important;
                 /* Reset any margins */
+                padding: 0 !important;
+                /* Ensure no padding on the card itself */
                 box-shadow: none !important;
                 /* Remove shadow for flat look */
                 background: rgba(255, 255, 255, 0.15) !important;
@@ -93,8 +95,11 @@
                 min-height: 50px !important;
                 /* Give it space */
                 flex: 0 0 auto !important;
-                padding-top: 10px !important;
+                padding-top: 20px !important;
                 background: transparent !important;
+                width: 100% !important;
+                /* Ensure full width */
+                justify-content: center !important;
             }
 
             .visual-icon {
@@ -103,17 +108,32 @@
             }
 
             .song-info {
-                display: block !important;
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
                 margin: 0 !important;
             }
 
             h1 {
-                font-size: 2rem !important;
-                /* Make sure title is big enough */
-                display: block !important;
+                font-size: 1.8rem !important;
+                /* Scaled for the box */
+                display: inline-block !important;
+                /* Wrap tightly */
                 color: #4a2c2c !important;
-                /* Ensure contrast */
-                margin: 0 !important;
+                margin: 0 0 5px 0 !important;
+
+                /* Requested Styling */
+                text-decoration: underline !important;
+                text-decoration-color: rgba(142, 68, 173, 0.5) !important;
+                /* Subtle purple underline */
+                text-underline-offset: 4px;
+
+                border: 2px solid rgba(255, 255, 255, 0.6) !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                border-radius: 50px !important;
+                /* Pill shape */
+                padding: 5px 25px !important;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
             }
 
             .content-area {
@@ -126,6 +146,8 @@
                 flex: 1 1 auto !important;
                 justify-content: center !important;
                 /* Center content vertically */
+                width: 100% !important;
+                /* Ensure container is full width */
             }
 
             .trans-text {
